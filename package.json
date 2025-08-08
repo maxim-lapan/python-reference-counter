@@ -1,0 +1,82 @@
+{
+  "name": "python-reference-counter",
+  "displayName": "Python Reference Counter",
+  "description": "Show Python function / method / class reference counts via CodeLens (PyCharm style).",
+  "version": "1.0.0",
+  "publisher": "maxim-lapan",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "python",
+    "references",
+    "codelens",
+    "navigation",
+    "productivity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxim-lapan/python-reference-counter"
+  },
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Python Reference Counter",
+      "properties": {
+        "pythonReferenceCounter.showZeroReferences": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show CodeLens even when there are zero references"
+        },
+        "pythonReferenceCounter.includeDefinition": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include the definition itself in the reference count"
+        },
+        "pythonReferenceCounter.enableForClasses": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable reference counting for class definitions"
+        },
+        "pythonReferenceCounter.enableForFunctions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable reference counting for function definitions"
+        },
+        "pythonReferenceCounter.enableFallbackWorkspaceScan": {
+          "type": "boolean",
+          "default": true,
+          "description": "When language server returns only local references, perform a naive workspace-wide text scan (may be slower / include false positives)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^3.6.0"
+  }
+}
